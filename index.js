@@ -3,6 +3,7 @@
 const express = require('express');
 const cors = require('cors');
 const morgan = require('morgan');
+const mongoose = require('mongoose');
 
 const { PORT, CLIENT_ORIGIN } = require('./config');
 const { dbConnect } = require('./db-mongoose');
@@ -30,7 +31,10 @@ app.get('/api/daily', (req, res) => {
   ]
   res.json(examples)
 })
-app.post('/api/daily', (req,res) => {
+/*============POST/CREATE A NEW DAILY POST============= */
+app.post('/api/daily', (req,res, next) => {
+
+
   
   Daily.create()
     .then(result => {
@@ -39,8 +43,8 @@ app.post('/api/daily', (req,res) => {
 
     })
     .catch(err => {
-      new Error;
-    })
+      next(err);
+    });
 })
 
 function runServer(port = PORT) {
