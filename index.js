@@ -6,6 +6,7 @@ const morgan = require('morgan');
 
 const { PORT, CLIENT_ORIGIN } = require('./config');
 const { dbConnect } = require('./db-mongoose');
+const Daily = require('./db/models/daily');
 // const {dbConnect} = require('./db-knex');
 
 const app = express();
@@ -28,6 +29,18 @@ app.get('/api/daily', (req, res) => {
     'chewie'
   ]
   res.json(examples)
+})
+app.post('/api/daily', (req,res) => {
+  
+  Daily.create()
+    .then(result => {
+      console.log(result);
+      res.location(`${req.originalUrl}/${result.id}`).status(201).json(result);
+
+    })
+    .catch(err => {
+      new Error;
+    })
 })
 
 function runServer(port = PORT) {
