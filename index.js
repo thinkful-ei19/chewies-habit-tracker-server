@@ -21,6 +21,14 @@ app.use(
     origin: CLIENT_ORIGIN
   })
 );
+app.get('/api/daily', (req, res) => {
+  const examples =[
+    'chewie',
+    'chewie',
+    'chewie'
+  ]
+  res.json(examples)
+})
 
 function runServer(port = PORT) {
   const server = app
