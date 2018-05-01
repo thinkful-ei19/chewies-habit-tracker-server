@@ -1,0 +1,42 @@
+[ 
+    { 
+        "meals": {
+        "breakfastMeal": false,
+        "dinnerMeal": true,
+        "mealDetails": "loved his food, ate it all"
+        },
+
+        "walkTimes": {
+            "morning": false,
+            "afternoon": true,
+            "evening": true,
+            "night": true
+        },
+        "poops": {
+            "poopQuality": 2,
+            "poopsTaken": 2,
+            "poopDetails": "solid"
+        },
+        "userId": "333333333333333333333300"
+    },
+    { 
+        "meals": {
+        "breakfastMeal": false,
+        "dinnerMeal": true,
+        "mealDetails": "allergic reaction to chicken"
+        },
+
+        "walkTimes": {
+            "morning": false,
+            "afternoon": true,
+            "evening": true,
+            "night": true
+        },
+        "poops": {
+            "poopQuality": 1,
+            "poopsTaken": 2,
+            "poopDetails": "not solid"
+        },
+        "userId": "333333333333333333333300"
+    }
+]

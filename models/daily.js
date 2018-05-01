@@ -14,15 +14,16 @@ const dailySchema = new mongoose.Schema({
         morning: { type: Boolean, default: false },
         afternoon: { type: Boolean, default: false },
         evening: { type: Boolean, default: false },
-        morning: { type: Boolean, default: false }
+        night: { type: Boolean, default: false }
 
     },
     poops: {
         poopQuality: Number,
         poopsTaken: Number,
         poopDetails: String
-    }
-    
+    },
+    userId: {type: mongoose.Schema.Types.ObjectId, ref:'User', required: true}
+
 });
 
 dailySchema.set('toObject', {
