@@ -11,10 +11,10 @@ const dailySchema = new mongoose.Schema({
     },
     
     walkTimes: {
-        morning: { type: Boolean, default: false },
-        afternoon: { type: Boolean, default: false },
-        evening: { type: Boolean, default: false },
-        night: { type: Boolean, default: false }
+        morningWalk: { type: Boolean, default: false },
+        afternoonWalk: { type: Boolean, default: false },
+        eveningWalk: { type: Boolean, default: false },
+        nightWalk: { type: Boolean, default: false }
 
     },
     poops: {

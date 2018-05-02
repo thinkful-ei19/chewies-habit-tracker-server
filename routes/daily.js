@@ -8,15 +8,15 @@ const mongoose = require('mongoose');
 const Daily = require('../models/daily');
 
 /* ========== GET/READ ALL ITEMS ========== */
-router.get('/daily', (req, res, next) => {
+router.get('/overview', (req, res, next) => {
 
     const userId = req.user.id;
   
     let filter = { userId };
   
     Daily.find(filter)
-      .sort('created')
       .then(results => {
+          console.log(results)
         res.json(results);
       })
       .catch(err => {
@@ -50,16 +50,20 @@ router.get('/daily', (req, res, next) => {
 router.post('/daily', (req,res, next) => {
   
   //if re.body.meals ! there throw err
-  console.log(req.body)
-  const { meals, walkTimes, poops, userId } = req.body;
-    console.log(userId);
+  
+  const { breakfastMeal, dinnerMeal, mealDetails,  morningWalk, afternoonWalk, eveningWalk,  nightWalk, poopQuality, poopsTaken, poopDetails } = req.body;
+  
+  const userId = req.user.id;
+ 
   //const userId = req.id;
   
-   const newItem ={ meals, walkTimes, poops, userId }
-    Daily.create(newItem)
+   const newItem ={ meals:{breakfastMeal, dinnerMeal, mealDetails}, walkTimes:{ morningWalk, afternoonWalk, eveningWalk,  nightWalk}, poops:{poopQuality, poopsTaken, poopDetails}, userId }
+   console.log(newItem);
+   Daily.create(newItem)
       .then(result => {
-        res.status(201).json(result.serialize())
-  
+       // res.status(201).json(result.serialize())
+        res.location(`${req.originalUrl}/${result.id}`).status(201).json(result);
+
       })
       .catch(err => {
         //consolelog error

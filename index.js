@@ -12,7 +12,7 @@ const { PORT, CLIENT_ORIGIN, JWT_SECRET, JWT_EXPIRY } = require('./config');
 const { dbConnect } = require('./db-mongoose');
 const dailyRouter = require('./routes/daily');
 const authRouter = require('./routes/auth');
-//const usersRouter = require('./routes/users');
+const usersRouter = require('./routes/users');
 // const {dbConnect} = require('./db-knex');
 //Utilize passport
 passport.use(localStrategy);
@@ -37,7 +37,7 @@ app.use(
   })
 );
 //mount routers
-//app.use('/api', usersRouter);
+app.use('/api', usersRouter);
 app.use('/api', authRouter);
 
 // Endpoints below this require a valid JWT
@@ -45,7 +45,13 @@ app.use(passport.authenticate('jwt', { session: false, failWithError: true }));
 
 app.use('/api', dailyRouter);
 
-
+app.use(function (err, req, res, next) {
+  res.status(err.status || 500);
+  res.json({
+    message: err.message,
+    error: app.get('env') === 'development' ? err : {}
+  });
+});
 
 function runServer(port = PORT) {
   const server = app
