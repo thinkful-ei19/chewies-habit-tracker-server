@@ -7,7 +7,6 @@ const dailySchema = new mongoose.Schema({
     meals: {
         breakfastMeal: { type: Boolean, default: false },
         dinnerMeal: { type: Boolean, default: false },
-        mealDetails: String
     },
     
     walkTimes: {
