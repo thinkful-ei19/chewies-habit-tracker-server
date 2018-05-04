@@ -17,7 +17,7 @@ const dailySchema = new mongoose.Schema({
 
     },
     poops: {
-        poopQuality: Number,
+        poopQuality: String,
         poopsTaken: Number,
         poopDetails: String
     },
