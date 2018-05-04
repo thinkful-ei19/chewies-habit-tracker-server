@@ -2,7 +2,7 @@
 
 module.exports = {
   PORT: process.env.PORT || 8080,
-  CLIENT_ORIGIN: process.env.CLIENT_ORIGIN || 'http://localhost:3000',
+  CLIENT_ORIGIN: process.env.CLIENT_ORIGIN || 'https://hungry-perlman-bc73ed.netlify.com',
   DATABASE_URL:
         process.env.DATABASE_URL || 'mongodb://userOne:passwordOne@ds157639.mlab.com:57639/chewies-daily-tracker',
   TEST_DATABASE_URL:
